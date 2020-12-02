@@ -1,0 +1,18 @@
+---
+# tasks file for keycloak
+
+     - name: Getting keycloak zip
+       get_url:
+          url: https://downloads.jboss.org/keycloak/8.0.2/keycloak-8.0.2.tar.gz
+          dest: /usr
+     - name: unzip keycloak
+       unarchive:
+          src: /usr/keycloak-8.0.2.tar.gz
+          dest: /usr
+          remote_src: yes
+     - name: Starting keycloak
+       shell: nohup /usr/keycloak-8.0.2/bin/standalone.sh &
+
+
+
+

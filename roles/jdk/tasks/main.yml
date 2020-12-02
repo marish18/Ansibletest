@@ -1,0 +1,12 @@
+---
+# tasks file for java
+
+     - name: updating repos
+       yum:
+         name: "*"
+         state: latest
+     - name: Installing required JDk
+       yum:
+         name: java-1.8.0-openjdk-devel
+         state: present
+

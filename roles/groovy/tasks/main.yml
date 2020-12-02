@@ -1,0 +1,13 @@
+---
+# tasks file for groovy
+
+ - name: Downloading Groovy Binary
+   get_url:
+        url: https://dl.bintray.com/groovy/maven/apache-groovy-binary-3.0.6.zip
+        dest: /usr
+ - name: unzipping binary
+   unarchive:
+        src: /usr/apache-groovy-binary-3.0.6.zip
+        dest: /usr
+        remote_src: yes
+

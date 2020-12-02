@@ -1,0 +1,41 @@
+---
+# tasks file for postgres
+ 
+ - name: Getting RPM
+   shell: sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+ - name: Installing Postgresql
+   shell: sudo install -y postgresql11-server
+
+ - name: Initializing postgresDB
+   shell: sudo /usr/pgsql-11/bin/postgresql-11-setup initdb
+
+ - name: Enable service postgres
+   shell: sudo systemctl enable postgresql-11
+ 
+ - name: Start the service
+   shell: sudo systemctl start postgresql-11
+   
+ - name: Install system packages
+   become: true
+   yum:
+     name:
+        - python3
+        - python3-devel
+        - python3-pip
+     state: present
+   
+ - name: Installing psycopg2
+   pip:
+     name: psycopg2-binary
+     executable: pip3
+   become: true
+
+ - name: creating users
+   postgresql_user:
+      name: digirig
+      password: digirig
+      role_attr_flags: SUPERUSER
+   become: true
+   become_user: postgres
+

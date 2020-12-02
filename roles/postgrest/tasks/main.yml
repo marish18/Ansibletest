@@ -1,0 +1,13 @@
+---
+# tasks file for postgrest
+    
+     - name: Getting postgrest binary
+       get_url:
+           url: https://github.com/PostgREST/postgrest/releases/download/v7.0.0/postgrest-v7.0.0-centos7.tar.xz
+           dest: /usr
+     - name: Unzipping
+       unarchive:
+           src: /usr/postgrest-v7.0.0-centos7.tar.xz
+           dest: /usr
+           remote_src: yes
+

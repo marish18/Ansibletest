@@ -1,0 +1,13 @@
+---
+# tasks file for vault
+
+      - name: Getting Vault Zip
+        get_url:
+           url: https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_amd64.zip
+           dest: /usr
+      - name: Unzipping vault
+        unarchive:
+           src: /usr/vault_1.2.3_linux_amd64.zip
+           dest: /usr
+           remote_src: yes
+

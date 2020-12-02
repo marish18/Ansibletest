@@ -1,0 +1,13 @@
+---
+  - name: Copy file with owner and permissions
+    copy:
+      src: grafana.repo
+      dest: /etc/yum.repos.d/
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Installing Grafana
+    yum:
+     name: grafana
+     state: present
